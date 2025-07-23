@@ -1,10 +1,26 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
 
+  const [blog, setBlog] = useState([])
+
+  function fetchBlog(){
+    return fetch('https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts')
+    .then(res => res.json())
+    .then(data => {
+      return console.log(data), setBlog(data);
+    })
+  }
+
+  useEffect(()=>{
+    fetchBlog()}
+    ,[]
+  )
+
   return (
     <>
+      
     </>
   )
 }
@@ -26,9 +42,6 @@ export default App
 
 
 // L’endpoint a cui effettuare la chiamata POST 
-// è il seguente: https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts
-// Questo endpoint, in caso di successo, vi restituisce i dati inviati. 
-// Stampateli in console per verificare di essere riusciti ad inviare correttamente tutto!
 
 // Bonus
 // aggiungere e gestire un alert per dare agli utenti un feedback sull’invio del form
