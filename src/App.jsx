@@ -3,7 +3,20 @@ import './App.css'
 
 function App() {
 
-  const [blog, setBlog] = useState([])
+  const [formData, setFormData] = useState({
+    title:'', 
+    author:'', 
+    postBody:'', 
+    public:0, 
+    draft:0,
+  })
+
+  function handleFormData(e){
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  };
 
   // Log blog
   // function fetchBlog(){
@@ -23,7 +36,7 @@ function App() {
   // le funzioni che gesticono gli eventi 'on-evento' si chiamano 'handle-evento'
   function handleSubmit(e){
     e.preventDefault();
-    console.log('Form Submitted');
+    alert('You just posted!');
   };
 
 
@@ -98,16 +111,7 @@ function App() {
 
 export default App
 
-
-// Oggi creeremo il nostro primo form multifield
-// per inviare dati in POST ad un’API.
-
-// Dovremo creare una nuova app React che contenga un 
-// form per creare un nuovo post all’interno di un blog.
-
-
-
-// L’endpoint a cui effettuare la chiamata POST 
+// L’endpoint a cui effettuare la chiamata POST: https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts
 
 // Bonus
 // aggiungere e gestire un alert per dare agli utenti un feedback sull’invio del form
